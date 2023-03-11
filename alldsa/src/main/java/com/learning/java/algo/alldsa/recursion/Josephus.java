@@ -3,6 +3,12 @@ package com.learning.java.algo.alldsa.recursion;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+/**
+ *  Consider a group of n men arranged in a circle (1, 2, 3, ..., n).
+ *  Every kth man will be killed around the circle until only one survivor remains.
+ *  Write an algorithm that finds the k position of this survivor.
+ *  This is known as the Josephus problem.
+ */
 public class Josephus {
 
     //recursive
