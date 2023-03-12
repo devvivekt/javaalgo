@@ -4,6 +4,13 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Consider a 5x5 grid with five defensive towers spread across the grid.
+ * To provide an optimal defense for the grid,
+ * we have to build a tower on each row of the grid.
+ * Find all the solutions for building these towers so that none of them
+ * share the same column and diagonal.
+ */
 public class FiveTower {
 
     public static final int GRID_SIZE = 5;
