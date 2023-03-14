@@ -1,8 +1,8 @@
 package com.learning.java.algo.alldsa.recursion;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class StringPermutation {
 
@@ -47,10 +47,44 @@ public class StringPermutation {
     }
 
 
+    public static List<String> nodupPermutation(String str){
+        if(str == null || str.isBlank()){
+            return Collections.emptyList();
+        }
+        return nodupPermutation("", str.length(),charactersMap(str));
+    }
+
+    public static List<String> nodupPermutation(String prefix, int strLen
+            , Map<Character, Long> characters){
+        List<String> permutations = new ArrayList<>();
+        if(strLen == 0){
+            permutations.add(prefix);
+        }else{
+            for(Character c : characters.keySet()){
+                int count = characters.get(c).intValue();
+                if(count > 0){
+                    characters.put(c, Long.valueOf(count-1));
+                    permutations.addAll(nodupPermutation(prefix+ c
+                            , strLen-1, characters));
+                    characters.put(c, Long.valueOf(count));
+                }
+
+            }
+        }
+        return permutations;
+    }
+
+    public static Map<Character, Long> charactersMap(String str){
+        Map<Character, Long> charMap = Collections.singletonList(str).stream().flatMap(a -> a.chars().mapToObj(c -> (char) c)) // Stream<Character>
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        return charMap;
+    }
+
+
     public static void main(String[] args){
         String str = "two";
         StringPermutation.simplePermutation(str);
-        str = "hellohowru"
+        str = "hellohowru";
         StringPermutation.dupPermutation(str);
     }
 }
