@@ -4,6 +4,12 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Write an algorithm that computes all the permutations of a string and
+ * accommodates the following two conditions:
+ * The given string can contain duplicates.
+ * The returned list of permutations should not contain duplicates.
+ */
 public class StringPermutation {
 
     public static void simplePermutation(String str){
