@@ -1,5 +1,9 @@
 package com.learning.java.algo.alldsa.recursion;
 
+/**
+ * Consider a chessboard (an 8x8 grid).
+ * Place a knight on this board and print all its unique movements.
+ */
 public class KnightTour {
 
     private final int n;
