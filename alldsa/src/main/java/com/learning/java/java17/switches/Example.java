@@ -1,4 +1,4 @@
-package com.learning.java.switches;
+package com.learning.java.java17.switches;
 
 /**
  * -> and : are new features , with , we can use either -> or :
