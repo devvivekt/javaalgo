@@ -9,7 +9,12 @@ import java.util.List;
 public class Vertex {
 
     private String name;
+    private boolean visited;
     private List<Vertex> adjacencyList;
+
+    public List<Vertex> getAdjacencyList() {
+        return adjacencyList;
+    }
 
     public Vertex(String name){
         this.name = name;
@@ -18,6 +23,14 @@ public class Vertex {
 
     public void addNeighbour(Vertex v){
         this.adjacencyList.add(v);
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     public void showNeighbours(){
