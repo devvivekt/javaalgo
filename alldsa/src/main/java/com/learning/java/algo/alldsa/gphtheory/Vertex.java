@@ -39,6 +39,10 @@ public class Vertex {
         }
     }
 
+    public List<Vertex> getNeighbours(){
+        return this.adjacencyList;
+    }
+
     @Override
     public String toString(){
         return this.name;
