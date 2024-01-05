@@ -23,7 +23,6 @@ public class FindingSingle {
     static int findSingle(int N, int arr[]){
         // code here
         int result = 0;
-        Map<Integer, Integer> map = new HashMap<>();
         for(int i=0; i< N; i++){
             result ^= arr[i];
         }
