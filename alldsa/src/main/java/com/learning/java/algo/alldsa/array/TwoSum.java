@@ -27,20 +27,20 @@ public class TwoSum {
     }
 
     //T O(n)  S O(n)
-    public int[] getSum(int[] arr, int sum){
+    public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
-        for(int i=0 ; i< arr.length; i++){
-            Integer val = map.get(sum - arr[i]);
-            if(val == null){
-                map.put(arr[i], i);
-            } else{
-             return new int[]{map.get(sum - arr[i]), i};   
+        for (int i = 0; i < nums.length; i++) {
+            Integer val = map.get(target - nums[i]);
+            if (val == null) {
+                map.put(nums[i], i);
+            } else {
+                return new int[]{map.get(target - nums[i]), i};
             }
         }
         return null;
     }
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         int[] arr = {2,5,6,4,3,9};
         TwoSum twoSum = new TwoSum();
         int[] res = twoSum.getSumBruteForce(arr, 12);
@@ -50,7 +50,7 @@ public class TwoSum {
         int[] res2 = twoSum.getSumBruteForce(arr2, 12);
         System.out.println("result2::"+ Arrays.toString(res2));
 
-        int[] resop = twoSum.getSum(arr, 12);
+        int[] resop = twoSum.twoSum(arr, 12);
         System.out.println("result::"+ Arrays.toString(resop));
     }
 
