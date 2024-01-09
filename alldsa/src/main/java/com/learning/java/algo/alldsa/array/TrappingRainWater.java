@@ -32,10 +32,43 @@ public class TrappingRainWater {
         return totalWater;
     }
 
+    /**
+     * /*
+     * 1. Identify the pointer with the lesser value
+     * 2. Is this pointer value greater than or equal to max on that side
+     *   yes -> update max on that side
+     *   no -> get water for pointer, add to total
+     * 3. move pointer inwards
+     * 4. repeat for other pointer
+     *  */
+    public int trap(int[] height) {
+        int left = 0, right = height.length -1, totalWater = 0, maxLeft = 0, maxRight = 0;
+        while(left < right){
+            if(height[left] <= height[right]){
+                if(height[left] >= maxLeft){
+                    maxLeft = height[left];
+                } else{
+                    totalWater+= maxLeft - height[left];
+                }
+                left ++;
+            } else{
+                if(height[right] >= maxRight){
+                    maxRight = height[right];
+                } else {
+                    totalWater+= maxRight - height[right];
+                }
+                right --;
+            }
+        }
+        return totalWater;
+    }
+
+
     public static void main(String[] args) {
         int[] elevationArray = {0, 1, 0, 2, 1, 0, 3, 1, 0, 1, 2};
         TrappingRainWater trappingRainWater = new TrappingRainWater();
         int areaTrapped = trappingRainWater.trapBrut(elevationArray);
         System.out.println("area:::::::"+areaTrapped);
+        System.out.println("areaoptimized"+trappingRainWater.trap(elevationArray));
     }
 }
