@@ -64,6 +64,40 @@ public class TrappingRainWater {
     }
 
 
+    /***
+     * Step1: Find max value form Leftside max value and height value iterate
+     * from 1 to n then store the in leftside array.
+     * Step2: Find max value from Rightside max value
+     * and height value iterate from n-2 to 0 then store the in rideside array.
+     * Step3: Declare a new variable sum=0.
+     * Step4: Find min from rightside max value and leftside max value
+     * Step5: Then subtract with height value given in the array and sum the value.
+     * Step6: Return the sum.
+     * @param height
+     * @return
+     */
+    public int trapIntuitive(int[] height) {
+        int n=height.length;
+        int[] lmax=new int[n];
+        int[] rmax=new int[n];
+        lmax[0]=height[0];
+        rmax[n-1]=height[n-1];
+        for(int i=1;i<n;i++)
+        {
+            lmax[i]=Integer.max(lmax[i-1],height[i]);
+        }
+        for(int i=n-2;i>=0;i--)
+        {
+            rmax[i]=Integer.max(rmax[i+1],height[i]);
+        }
+        int sum=0;
+        for(int i=1;i<n;i++)
+        {
+            sum+=Integer.min(rmax[i],lmax[i])-height[i];
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         int[] elevationArray = {0, 1, 0, 2, 1, 0, 3, 1, 0, 1, 2};
         TrappingRainWater trappingRainWater = new TrappingRainWater();
