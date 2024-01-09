@@ -104,5 +104,6 @@ public class TrappingRainWater {
         int areaTrapped = trappingRainWater.trapBrut(elevationArray);
         System.out.println("area:::::::"+areaTrapped);
         System.out.println("areaoptimized"+trappingRainWater.trap(elevationArray));
+        System.out.println("areaointuitive"+trappingRainWater.trapIntuitive(elevationArray));
     }
 }
