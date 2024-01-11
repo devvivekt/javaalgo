@@ -1,5 +1,11 @@
 package com.learning.java.algo.alldsa.stringi;
 
+import io.netty.util.internal.StringUtil;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * https://leetcode.com/problems/backspace-string-compare/
  *
@@ -40,17 +46,53 @@ public class BackSpaceString {
         return input2.equals(input1);
     }
 
+    public boolean backspaceCompareOpt(String s, String t) {
+        int pointers = s.length()-1, pointert = t.length()-1;
+        while(pointers >= 0 || pointert >= 0){
+            if((pointers>=0 && s.charAt(pointers) =='#') || (pointert >=0 && t.charAt(pointert) == '#')){
+                if (s.charAt(pointers) == '#') {
+                    int backcounter = 2;
+                    while (backcounter > 0){
+                        pointers --;
+                        backcounter --;
+                        if(pointers == '#'){
+                            backcounter += 2;
+                        }
+                    }
+                }
+
+                if (t.charAt(pointert) == '#') {
+                    int backcounter = 2;
+                    while (backcounter > 0){
+                        pointert --;
+                        backcounter --;
+                        if(pointert == '#'){
+                            backcounter += 2;
+                        }
+                    }
+                }
+            } else {
+                if(pointers >= 0 && pointert >=0 && (( s.charAt(pointers)) != t.charAt(pointert))){
+                    return false;
+                } else{
+                    pointers--;
+                    pointert--;
+                }
+            }
+        }
+        return true;
+    }
+
+
     private String backify(String input){
         StringBuilder sb = new StringBuilder();
-        char prevChar = '%';
-        for(int i= input.length()-1 ; i >=0 ; i--){
-            if(input.charAt(i) == '#'){
-                prevChar = '#';
-            }
-            if(prevChar == '#'){
-                prevChar = '%';
-            }else {
+        for(int i= 0 ; i < input.length() ; i++){
+            if(input.charAt(i) != '#'){
                 sb.append(input.charAt(i));
+            } else{
+                if(sb.length() >= 1) {
+                    sb.deleteCharAt(sb.length() - 1);
+                }
             }
         }
         return sb.toString();
@@ -63,9 +105,17 @@ public class BackSpaceString {
         BackSpaceString backSpaceString = new BackSpaceString();
         boolean comp = backSpaceString.backspaceCompare(input1, input2);
         System.out.println("comparision::::"+comp);
+        System.out.println("comparision::::"+backSpaceString.backspaceCompareOpt(input1, input2));
+        ;
         input1 = "xywrrmp";
         input2 = "xywrrmu#p";
         comp = backSpaceString.backspaceCompare(input1, input2);
         System.out.println("comparision xywrrmp::::"+comp);
+        System.out.println("comparision::::"+backSpaceString.backspaceCompareOpt(input1, input2));
+        input1 = "ab##";
+        input2 = "c#d#";
+        comp = backSpaceString.backspaceCompare(input1, input2);
+        System.out.println("comparision ab##::::"+comp);
+        System.out.println("comparision::::"+backSpaceString.backspaceCompareOpt(input1, input2));
     }
 }

@@ -28,6 +28,7 @@ public class ShortestPath {
         }
     }
 
+    //negating the weight will give the longest paths
     public static void main(String[] args) {
         List<Vartex> graph = new ArrayList<>();
         Vartex v0 = new Vartex("S");

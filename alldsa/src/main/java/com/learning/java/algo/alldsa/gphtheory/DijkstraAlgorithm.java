@@ -38,6 +38,7 @@ public class DijkstraAlgorithm {
         return path;
     }
 
+    //negating the weight values in the edge will give the longest path
     public static void main(String[] args) {
         Vartax vertex0 = new Vartax("A");
         Vartax vertex1 = new Vartax("B");
